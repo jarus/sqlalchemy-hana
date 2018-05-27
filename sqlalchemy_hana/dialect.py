@@ -157,7 +157,23 @@ class HANAExecutionContext(default.DefaultExecutionContext):
 class HANAInspector(reflection.Inspector):
 
     def get_table_oid(self, table_name, schema=None):
-        return self.dialect.get_table_oid(self.bind, table_name, schema, info_cache=self.info_cache)
+        """Return the database unique object id (OID) for the given table name.
+
+        :param table_name: Name of table
+        :type table_name: str
+        :param schema: Name of database schema
+        :type schema: str
+        :rtype: int
+
+        >>> from sqlalchemy import inspect
+        >>> inspector = inspect(engine)
+        >>> inspector.get_table_oid('my_table_id')
+        205633
+        """
+
+        return self.dialect.get_table_oid(
+            self.bind, table_name, schema, info_cache=self.info_cache
+        )
 
 
 class HANABaseDialect(default.DefaultDialect):
