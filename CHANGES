@@ -3,6 +3,8 @@ Changelog
 
 0.4.0.dev
 ---------
+- Support connecting with credentials from a hdbuserstore key
+- Raise IntegrityError at unique constraint violations
 - Support for inspection of table oid
 - Support for table comments
 - Support for setting and reflecting isolation level
